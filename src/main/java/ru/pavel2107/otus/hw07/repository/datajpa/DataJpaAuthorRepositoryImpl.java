@@ -37,8 +37,7 @@ public class DataJpaAuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public List<Author> getByName(String name) {
-        //return crudAuthorRepository.findByName( name);
-        return null;
+        return crudAuthorRepository.findByName( name);
     }
 
     @Override

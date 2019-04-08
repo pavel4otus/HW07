@@ -38,7 +38,7 @@ public abstract class AbstractNamedEntity {
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
 
     public boolean isNew(){

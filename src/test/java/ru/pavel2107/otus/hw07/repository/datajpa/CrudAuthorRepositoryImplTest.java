@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,21 +24,19 @@ import static org.junit.jupiter.api.Assertions.*;
 @EntityScan( basePackages = { "ru.pavel2107.otus.hw07.domain"})
 @DataJpaTest
 @RunWith(SpringRunner.class)
-@DisplayName( "JPA. Репозиторий комментариев")
-@ActiveProfiles( "jpa")
+@DisplayName( "JPA. Репозиторий авторов")
+@Import(DataJpaAuthorRepositoryImpl.class)
+@ActiveProfiles( "datajpa")
 class CrudAuthorRepositoryImplTest {
 
     @Autowired
     AuthorRepository repository;
 
-
-    @Test
-    void delete() {
-    }
-
-
     @Test
     void getByName() {
+        List<Author> list = repository.getByName( "king");
+        assertEquals( "king", list.get(0).getName() );
+
     }
 
 
